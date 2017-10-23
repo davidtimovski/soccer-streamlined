@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Soccer Streamlined</title>
+    <link rel="stylesheet" href="css/main.min.css" />
+  </head>
+  <body>
+    <div id="loading"></div>
+
+    <input type="text" id="search" placeholder="Search" data-visible="false" />
+    
+    <table id="matches"></table>
+
+    <div id="streams-wrap">
+      <header>
+        <div class="header-part">
+          <button id="back-button">Back</button>
+        </div>
+        <div id="thread-info" class="header-part middle"></div>
+        <div class="header-part right">
+          <button id="thread-button">Thread</button>
+        </div>
+      </header>
+
+      <div class="clipboard-wrap">
+        <div class="stream-type"></div>
+        <textarea id="clipboard"></textarea>
+      </div>
+
+      <table id="streams"></table>
+    </div>
+
+    <div id="message"></div>
+
+    <script src="js/popup.js"></script>
+  </body>
+</html>

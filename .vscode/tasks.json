@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "taskName": "Release",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": [ "Compile TypeScript", "Minify JavaScript", "Minify CSS", "Copy over remaining files" ]
+    },
+    {
+      "label": "Compile TypeScript",
+      "type": "typescript",
+      "tsconfig": "tsconfig.json",
+      "problemMatcher": [
+        "$tsc"
+      ]
+    },
+    {
+      "label": "Minify JavaScript",
+      "type": "grunt",
+      "task": "uglify"
+    },
+    {
+      "label": "Minify CSS",
+      "type": "grunt",
+      "task": "cssmin",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Copy over remaining files",
+      "type": "grunt",
+      "task": "copy"
+    }
+  ]
+}

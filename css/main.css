@@ -1,0 +1,294 @@
+body {
+    background: #fafafa;
+    margin: 6px 6px 3px 6px;
+    font-family: 'Segoe UI', 'Lucida Grande', Tahoma, sans-serif;
+    font-size: 14px;
+    color: #444;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 250ms;
+}
+
+table {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+}
+tr, td {
+    padding: 0;
+}
+
+#loading {
+    width: 34px;
+    height: 34px;
+    background: url(../images/loading.gif);
+    background-size: 34px 34px;
+    background-repeat: no-repeat;
+    margin: 10px 5px;
+}
+
+#search {
+    display: none;
+    width: 100%;
+    min-width: 200px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 4px 6px;
+    margin-bottom: 5px;
+    font-family: inherit;
+    color: #444;
+}
+
+#message {
+    display: none;
+    padding: 0 5px;
+    white-space: nowrap;
+    text-align: center;
+}
+#message.info {
+    color: #3f8cbf;
+}
+#message.error {
+    color: #bf3c4f;
+}
+
+#matches {
+    display: none;
+}
+#matches tr {
+    font-size: 0;
+}
+#matches tr td {
+    border-bottom: 1px solid #ddd;
+    padding: 0;
+    font-size: 14px;
+}
+#matches tr td:first-child {
+    min-width: 42px;
+    padding-right: 5px;
+    text-align: center;
+}
+#matches tr td .kickoff-time {
+    color: #3f8cbf;
+}
+#matches tr td .loading {
+    display: none;
+    background: url(../images/loading.gif);
+    background-size: 22px 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 42px;
+    height: 22px;
+}
+#matches tr td:nth-child(n+2) {
+    width: 100%;
+}
+#matches tr:last-child td {
+    border-bottom: none;
+}
+.league-icon {
+    display: inline-block;
+    width: auto!important;
+    height: 17px;
+    background: url(../images/league-icons.png) no-repeat -9999px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    margin-right: 5px;
+    border: 0;
+    text-indent: -999em;
+    vertical-align: bottom;
+}
+.league-icon.premierleague {
+    background-position: 0 -475px !important;
+}
+.league-icon.seriea {
+    background-position: 0 -543px !important;
+}
+.league-icon.laliga {
+    background-position: 0 -390px !important;
+}
+.league-icon.bundesliga {
+    background-position: 0 -33px !important;
+}
+.league-icon.ligue1 {
+    background-position: 0 -207px !important;
+}
+.league-icon.eredivisie {
+    background-position: 0 -271px !important;
+}
+.league-icon.primeraliga {
+    background-position: 0 -509px !important;
+}
+.league-icon.championship {
+    background-position: 0 -67px !important;
+}
+.league-icon.scottishpremierleague {
+    background-position: 0 -526px !important;
+}
+.league-icon.aleague {
+    background-position: 0 -16px !important;
+}
+.league-icon.europa {
+    background-position: 0 -288px !important;
+}
+.league-icon.turkishsuperlig {
+    background-position: 0 -577px !important;
+}
+.league-icon.mls {
+    background-position: 0 -424px !important;
+}
+.league-icon.gresupleague {
+    background-position: 0px -832px !important;
+}
+.league-icon.densuperliga {
+    background-position: 0 -900px !important;
+}
+.league-icon.extraklasa {
+    background-position: 0px -934px !important;
+}
+.league-icon.beljup {
+    background-position: 0 -1087px !important;
+}
+.league-icon.chiprem {
+    background-position: 0 -968px !important;
+}
+#matches tr td button {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 5px 8px;
+    white-space: nowrap;
+    text-align: left;
+    color: #444;
+}
+#matches tr:hover td {
+    background: #f3f3f3;
+}
+
+#streams-wrap {
+    display: none;
+}
+#streams-wrap header {
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+#streams-wrap header .header-part {
+    display: table-cell;
+}
+#streams-wrap header .header-part.middle {
+    padding: 0 15px 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+#streams-wrap header .header-part.right {
+    text-align: right;
+}
+#streams-wrap header button {
+    background: #7fccff;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 5px 10px;
+    color: #fff;
+}
+#streams-wrap header button:hover {
+    background: #77c4f7;
+}
+
+#streams tr td {
+    border-bottom: 1px solid #ddd;
+    padding-top: 3px;
+}
+#streams tr:last-child td {
+    border-bottom: none;
+}
+
+.links {
+    min-width: 307px;
+    background: url(../images/links-bg.png) repeat;
+    padding-right: 3px !important;
+}
+.links button {
+    display: inline-block;
+    width: 28px;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 3px 0;
+    margin: 0 3px 3px 0;
+    color: #fff;
+}
+.links button:nth-child(10n+10) {
+    margin-right: 0;
+}
+
+.author {
+    border-left: 1px solid #ddd;
+    padding: 0 0 3px 3px;
+    text-align: center;
+}
+.author button {
+    width: 100%;
+    background: #f0f0f0;
+    border: none;
+    outline: none;
+    padding: 4px 8px;
+    color: #444;
+}
+.author button:hover {
+    background: #f5f5f5;
+}
+
+.url-button {
+    background: #80cdff;
+}
+.url-button:hover {
+    background: #60addf;
+}
+
+.ace-stream-button {
+    background: #bdd990;
+}
+.ace-stream-button:hover {
+    background: #9db970;
+}
+
+.sopcast-stream-button {
+    background: #e181c1;
+}
+.sopcast-stream-button:hover {
+    background: #c161a1;
+}
+
+.clipboard-wrap {
+    display: flex;
+    display: none;
+    min-width: 385px;
+    margin-bottom: 15px;
+}
+.clipboard-wrap .stream-type {
+    flex: 1;
+    background: #fcfcfc;
+    border: 1px solid #ddd;
+    border-right: none;
+    padding: 0 7px;
+    line-height: 25px;
+}
+.clipboard-wrap textarea {
+    width: 100%;
+    height: 28px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 4px 6px;
+    font-family: inherit;
+    color: #444;
+    resize: none;
+}
