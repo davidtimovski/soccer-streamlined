@@ -2,7 +2,7 @@
   "compilerOptions": {
       "target": "es5",
       "module": "none",
-      "outFile": "./build/js/popup.js",
+      "outFile": "./debug/js/popup.js",
       "types": ["chrome"]
   },
   "files": ["popup.ts"]

@@ -7,7 +7,15 @@
         "kind": "build",
         "isDefault": true
       },
-      "dependsOn": [ "Compile TypeScript", "Minify JavaScript", "Minify CSS", "Copy over remaining files" ]
+      "dependsOn": [ "Compile TypeScript", "Minify JavaScript", "Minify CSS", "Copy remaining files (Release)" ]
+    },
+    {
+      "taskName": "Debug",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": [ "Compile TypeScript", "Copy remaining files (Debug)" ]
     },
     {
       "label": "Compile TypeScript",
@@ -32,9 +40,14 @@
       }
     },
     {
-      "label": "Copy over remaining files",
+      "label": "Copy remaining files (Debug)",
       "type": "grunt",
-      "task": "copy"
+      "task": "copydebug"
+    },
+    {
+      "label": "Copy remaining files (Release)",
+      "type": "grunt",
+      "task": "copyrelease"
     }
   ]
 }
