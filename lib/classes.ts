@@ -40,6 +40,8 @@ class App {
 
     let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
     DomHelper.hideElement(clipboardWrap);
+
+    DomHelper.removeEventHandlers('thread-button');
   }
   
   populateMatchesTable(matches: Match[]): void {
@@ -329,6 +331,12 @@ class DomHelper {
     messageDiv.innerText = '';
     messageDiv.className = '';
     DomHelper.hideElement(messageDiv);
+  }
+
+  static removeEventHandlers(id: string): void {
+    let element = document.getElementById(id);
+    let clone = element.cloneNode(true);
+    element.parentNode.replaceChild(clone, element);
   }
 }
 
