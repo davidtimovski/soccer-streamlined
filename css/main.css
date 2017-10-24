@@ -1,6 +1,6 @@
 body {
     background: #fafafa;
-    margin: 6px 6px 3px 6px;
+    margin: 6px 6px 4px 6px;
     font-family: 'Segoe UI', 'Lucida Grande', Tahoma, sans-serif;
     font-size: 14px;
     color: #444;
@@ -46,7 +46,7 @@ tr, td {
 
 #message {
     display: none;
-    padding: 0 5px;
+    padding: 0 5px 2px 5px;
     white-space: nowrap;
     text-align: center;
 }
@@ -156,6 +156,15 @@ tr, td {
 }
 .league-icon.chiprem {
     background-position: 0 -968px !important;
+}
+.league-icon.copadelrey {
+    background-position: 0 -169px !important;
+}
+.league-icon.dfbpokal {
+    background-position: 0 -237px !important;
+}
+.league-icon.coupedefrance {
+    background-position: 0 -220px !important;
 }
 #matches tr td button {
     display: block;
