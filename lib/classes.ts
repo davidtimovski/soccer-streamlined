@@ -41,7 +41,8 @@ class App {
     let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
     DomHelper.hideElement(clipboardWrap);
 
-    DomHelper.removeEventHandlers('thread-button');
+    let threadButton = document.getElementById('thread-button');
+    DomHelper.removeEventHandlers(threadButton);
   }
   
   populateMatchesTable(matches: Match[]): void {
@@ -333,8 +334,7 @@ class DomHelper {
     DomHelper.hideElement(messageDiv);
   }
 
-  static removeEventHandlers(id: string): void {
-    let element = document.getElementById(id);
+  static removeEventHandlers(element: Element): void {
     let clone = element.cloneNode(true);
     element.parentNode.replaceChild(clone, element);
   }
