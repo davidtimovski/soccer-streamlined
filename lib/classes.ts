@@ -246,6 +246,7 @@ class App {
       for (let j = 0; j < stream.sopCastStreams.length; j++) {
         let sopCastStreamButton = document.createElement('button');
         sopCastStreamButton.innerText = (j + 1).toString();
+        sopCastStreamButton.title = stream.sopCastStreams[j].title;
         DomHelper.addClass(sopCastStreamButton, 'sopcast-stream-button');
         sopCastStreamButton.dataset.title = 'Copy sopcast link';
         sopCastStreamButton.addEventListener('click', () => {
