@@ -1,5 +1,3 @@
-/// <reference path="./constants.ts" />
-
 class Match {
   id: string;
   title: string;
@@ -12,9 +10,65 @@ class Match {
 class Stream {
   author: string;
   commentUrl: string;
-  urls: string[];
-  aceStreams: string[];
-  sopCastStreams: string[];
+  links: Link[];
+  aceStreams: AceStream[];
+  sopCastStreams: SopCast[];
+}
+
+class Link {
+  private static readonly linksRegex: RegExp = /\[(.+?)\]\s*?\(\s*(https?:\/\/.+?)\s*\)/g;
+
+  constructor(public uri: string, public title: string) {}
+
+  static greedyRegexMatch(search: string, result: Link[]): void {
+    let matches = this.linksRegex.exec(search);
+
+    if (matches !== null) {
+      let title = matches[1].trim();
+      let uri = matches[2];
+
+      result.push(new Link(uri, title.trim()));
+      this.greedyRegexMatch(search, result);
+    }
+  }
+}
+
+class AceStream {
+  private static readonly aceStreamsRegex: RegExp = /(.*)(acestream:\/\/([a-zA-Z0-9]+))(.*)/g;
+
+  constructor(public uri: string, public title: string) {}
+
+  static greedyRegexMatch(search: string, result: AceStream[]): void {
+    let matches = this.aceStreamsRegex.exec(search);
+
+    if (matches !== null) {
+      let preText = matches[1].replace(/&gt;/g, '').trim();
+      let postText = matches[4].replace(/&gt;/g, '').trim();
+      let streamId = matches[3];
+
+      result.push(new AceStream(streamId, `${preText} ${postText}`));
+      this.greedyRegexMatch(search, result);
+    }
+  }
+}
+
+class SopCast {
+  private static readonly sopCastStreamsRegex: RegExp = /(.*)(sop:\/\/(\S+))(.*)/g;
+
+  constructor(public uri: string, public title: string) {}
+
+  static greedyRegexMatch(search: string, result: SopCast[]): void {
+    let matches = this.sopCastStreamsRegex.exec(search);
+
+    if (matches !== null) {
+      let preText = matches[1].replace(/&gt;/g, '').trim();
+      let postText = matches[4].replace(/&gt;/g, '').trim();
+      let uri = matches[3];
+
+      result.push(new SopCast(uri, `${preText} ${postText}`));
+      this.greedyRegexMatch(search, result);
+    }
+  }
 }
 
 class ThreadInfo {
@@ -148,31 +202,33 @@ class App {
       let linksTd = document.createElement('td');
       DomHelper.addClass(linksTd, 'links');
   
-      // Urls
-      for (let j = 0; j < stream.urls.length; j++) {
-        let urlButton = document.createElement('button');
-        urlButton.innerText = (j + 1).toString();
-        DomHelper.addClass(urlButton, 'url-button');
-        urlButton.addEventListener('click', () => {
-          chrome.tabs.create({ url: stream.urls[j], active: false });
+      // Links
+      for (let j = 0; j < stream.links.length; j++) {
+        let linkButton = document.createElement('button');
+        linkButton.innerText = (j + 1).toString();
+        linkButton.title = stream.links[j].title;
+        DomHelper.addClass(linkButton, 'link-button');
+        linkButton.addEventListener('click', () => {
+          chrome.tabs.create({ url: stream.links[j].uri, active: false });
         }, false);
 
         let rowDiv = document.createElement('div');
         rowDiv.appendChild(linksTd);
   
-        linksTd.appendChild(urlButton);
+        linksTd.appendChild(linkButton);
       }
   
       // Ace Streams
       for (let j = 0; j < stream.aceStreams.length; j++) {
         let aceStreamButton = document.createElement('button');
         aceStreamButton.innerText = (j + 1).toString();
+        aceStreamButton.title = stream.aceStreams[j].title;
         DomHelper.addClass(aceStreamButton, 'ace-stream-button');
         aceStreamButton.dataset.title = 'Copy acestream link';
         aceStreamButton.addEventListener('click', () => {
   
           let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
-          clipboardTextarea.value = stream.aceStreams[j];
+          clipboardTextarea.value = stream.aceStreams[j].uri;
           let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
           streamTypeDiv.innerText = 'acestream';
           let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
@@ -195,7 +251,7 @@ class App {
         sopCastStreamButton.addEventListener('click', () => {
 
           let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
-          clipboardTextarea.value = stream.sopCastStreams[j];
+          clipboardTextarea.value = stream.sopCastStreams[j].uri;
           let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
           streamTypeDiv.innerText = 'sopcast';
           let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
@@ -367,12 +423,12 @@ class Parser {
     return matches;
   }
 
-  greedyRegexMatch(search: string, regex: RegExp, result: string[]): void {
+  greedyRegexMatch(search: string, regex: RegExp, matchingGroup: number, result: any[]): void {
     let matches = regex.exec(search);
 
     if (matches !== null) {
-      result.push(matches[1]);
-      this.greedyRegexMatch(search, regex, result);
+      result.push(matches[matchingGroup]);
+      this.greedyRegexMatch(search, regex, matchingGroup, result);
     }
   }
 
@@ -380,20 +436,20 @@ class Parser {
     let streams = new Array<Stream>();
   
     for (let comment of comments) {
-      let urlsInBody: string[] = [];
-      let aceStreamsInBody: string[] = [];
-      let sopCastStreamsInBody: string[] = [];
+      let linksInBody: Link[] = [];
+      let aceStreamsInBody: AceStream[] = [];
+      let sopCastStreamsInBody: SopCast[] = [];
 
-      this.greedyRegexMatch(comment.data.body, Constants.urlsRegex, urlsInBody);
-      this.greedyRegexMatch(comment.data.body, Constants.aceStreamsRegex, aceStreamsInBody);
-      this.greedyRegexMatch(comment.data.body, Constants.sopCastStreamsRegex, sopCastStreamsInBody);
+      Link.greedyRegexMatch(comment.data.body, linksInBody);
+      AceStream.greedyRegexMatch(comment.data.body, aceStreamsInBody);
+      SopCast.greedyRegexMatch(comment.data.body, sopCastStreamsInBody);
   
-      if ((urlsInBody.length + aceStreamsInBody.length + sopCastStreamsInBody.length) > 0) {
+      if ((linksInBody.length + aceStreamsInBody.length + sopCastStreamsInBody.length) > 0) {
         let stream = new Stream();
 
         stream.author = comment.data.author;
         stream.commentUrl = postUrl + comment.data.id;
-        stream.urls = urlsInBody;
+        stream.links = linksInBody;
         stream.aceStreams = aceStreamsInBody;
         stream.sopCastStreams = sopCastStreamsInBody;
 
@@ -428,7 +484,8 @@ class Parser {
   getTitleWithoutTime(title: string): string {
     let startingPosition: number = title.indexOf(']');
     let titleWithoutTime: string = title.substring(startingPosition + 1, title.length).trim();
-    return titleWithoutTime.replace(Constants.cleanUpTitleRegex, '');
+    let cleanUpTitleRegex: RegExp = /([^a-zA-Z]*?)(?=[a-zA-Z])/;
+    return titleWithoutTime.replace(cleanUpTitleRegex, '');
   }
 
   formatKickOffTime(date: Date): string {

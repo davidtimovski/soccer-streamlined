@@ -255,10 +255,10 @@ tr, td {
     background: #f5f5f5;
 }
 
-.url-button {
+.link-button {
     background: #80cdff;
 }
-.url-button:hover {
+.link-button:hover {
     background: #60addf;
 }
 

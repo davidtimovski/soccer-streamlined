@@ -1,4 +1,3 @@
-/// <reference path="./lib/constants.ts" />
 /// <reference path="./lib/classes.ts" />
 
 let httpClient = new HttpClient();
@@ -36,7 +35,8 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   let body = document.getElementsByTagName('body')[0];
   body.addEventListener('keyup', event => {
     // If a letter was typed
-    if (Constants.typingRegex.exec(event.key) !== null && matchesTable.style.display === 'block') {
+    let typingRegex: RegExp = /^[a-zA-Z]$/;
+    if (typingRegex.exec(event.key) !== null && matchesTable.style.display === 'block') {
       if (searchInput.dataset.visible === 'false') {
         searchInput.dataset.visible = 'true';
         DomHelper.showElement(searchInput);
