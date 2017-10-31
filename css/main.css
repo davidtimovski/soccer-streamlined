@@ -93,7 +93,7 @@ tr, td {
 }
 .league-icon {
     display: inline-block;
-    width: auto!important;
+    width: auto !important;
     height: 17px;
     background: url(../images/league-icons.png) no-repeat -9999px;
     box-sizing: border-box;
@@ -104,67 +104,79 @@ tr, td {
     vertical-align: bottom;
 }
 .league-icon.premierleague {
-    background-position: 0 -475px !important;
+    background-position: 0 -475px;
 }
 .league-icon.seriea {
-    background-position: 0 -543px !important;
+    background-position: 0 -543px;
 }
 .league-icon.laliga {
-    background-position: 0 -390px !important;
+    background-position: 0 -390px;
 }
 .league-icon.bundesliga {
-    background-position: 0 -33px !important;
+    background-position: 0 -33px;
 }
 .league-icon.ligue1 {
-    background-position: 0 -207px !important;
+    background-position: 0 -207px;
 }
 .league-icon.eredivisie {
-    background-position: 0 -271px !important;
+    background-position: 0 -271px;
 }
 .league-icon.primeraliga {
-    background-position: 0 -509px !important;
+    background-position: 0 -509px;
 }
 .league-icon.championship {
-    background-position: 0 -67px !important;
+    background-position: 0 -67px;
 }
 .league-icon.scottishpremierleague {
-    background-position: 0 -526px !important;
+    background-position: 0 -526px;
 }
 .league-icon.aleague {
-    background-position: 0 -16px !important;
+    background-position: 0 -16px;
+}
+.league-icon.championsleague {
+    background-position: 0 -84px;
 }
 .league-icon.europa {
-    background-position: 0 -288px !important;
+    background-position: 0 -288px;
 }
 .league-icon.turkishsuperlig {
-    background-position: 0 -577px !important;
+    background-position: 0 -577px;
 }
 .league-icon.mls {
-    background-position: 0 -424px !important;
+    background-position: 0 -424px;
 }
 .league-icon.gresupleague {
-    background-position: 0px -832px !important;
+    background-position: 0px -832px;
 }
 .league-icon.densuperliga {
-    background-position: 0 -900px !important;
+    background-position: 0 -900px;
 }
 .league-icon.extraklasa {
-    background-position: 0px -934px !important;
+    background-position: 0px -934px;
 }
 .league-icon.beljup {
-    background-position: 0 -1087px !important;
+    background-position: 0 -1087px;
 }
 .league-icon.chiprem {
-    background-position: 0 -968px !important;
+    background-position: 0 -968px;
+}
+.league-icon.frligue2 {
+    background-position: 0px -763px;
+}
+.league-icon.itaserieb {
+    background-position: 0px -815px;
+}
+.league-icon.allsvenskan {
+    background-position: 0px -883px;
 }
 .league-icon.copadelrey {
-    background-position: 0 -169px !important;
+    background-position: 0 -169px;
 }
 .league-icon.dfbpokal {
-    background-position: 0 -237px !important;
+    background-position: 0 -237px;
 }
 .league-icon.coupedefrance {
-    background-position: 0 -220px !important;
+    background-position: 0 -220px;
 }
 #matches tr td button {
     display: block;
