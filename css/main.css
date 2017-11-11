@@ -133,6 +133,9 @@ tr, td {
 .league-icon.aleague {
     background-position: 0 -16px;
 }
+.league-icon.facup {
+    background-position: 0 -322px;
+}
 .league-icon.championsleague {
     background-position: 0 -84px;
 }
@@ -177,6 +180,18 @@ tr, td {
 }
 .league-icon.coupedefrance {
     background-position: 0 -220px;
+}
+.league-icon.tippeligaen {
+    background-position: 0 -917px;
+}
+.league-icon.nasl {
+    background-position: 0 -441px;
+}
+.league-icon.fifa {
+    background-position: 0px -645px;
+}
+.league-icon.internationalfriendlies {
+    background-position: 0px -356px;
 }
 #matches tr td button {
     display: block;
