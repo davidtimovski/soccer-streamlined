@@ -305,14 +305,12 @@ tr, td {
 
 .clipboard-wrap {
     display: flex;
-    display: none;
-    min-width: 385px;
-    margin-bottom: 15px;
 }
 .clipboard-wrap .stream-type {
+    display: none;
     flex: 1;
-    background: #fcfcfc;
-    border: 1px solid #ddd;
+    background: #f0f0f0;
+    border: 1px solid #f0f0f0;
     border-right: none;
     padding: 0 7px;
     line-height: 25px;
@@ -321,10 +319,14 @@ tr, td {
     width: 100%;
     height: 28px;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid #f0f0f0;
     outline: none;
-    padding: 4px 6px;
+    padding: 3px 5px;
     font-family: inherit;
+    text-align: center;
     color: #444;
     resize: none;
+}
+.clipboard-wrap textarea:disabled {
+    background: #f0f0f0;
 }

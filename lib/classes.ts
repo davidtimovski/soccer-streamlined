@@ -88,12 +88,13 @@ class App {
   
     let matchesTable = document.getElementById('matches');
     DomHelper.showElement(matchesTable);
+
+    let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
+    DomHelper.hideElement(streamTypeDiv);
   
     let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
     clipboardTextarea.value = '';
-
-    let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
-    DomHelper.hideElement(clipboardWrap);
+    clipboardTextarea.disabled = true;
 
     let threadButton = document.getElementById('thread-button');
     DomHelper.removeEventHandlers(threadButton);
@@ -211,10 +212,12 @@ class App {
       for (let j = 0; j < stream.links.length; j++) {
         let linkButton = document.createElement('button');
         linkButton.innerText = (j + 1).toString();
-        linkButton.title = stream.links[j].title;
         DomHelper.addClass(linkButton, 'link-button');
         linkButton.addEventListener('click', () => {
           chrome.tabs.create({ url: stream.links[j].uri, active: false });
+        }, false);
+        linkButton.addEventListener('mouseover', () => {
+          DomHelper.showStreamTitle(stream.links[j].title);
         }, false);
 
         let rowDiv = document.createElement('div');
@@ -227,21 +230,27 @@ class App {
       for (let j = 0; j < stream.aceStreams.length; j++) {
         let aceStreamButton = document.createElement('button');
         aceStreamButton.innerText = (j + 1).toString();
-        aceStreamButton.title = stream.aceStreams[j].title;
         DomHelper.addClass(aceStreamButton, 'ace-stream-button');
         aceStreamButton.dataset.title = 'Copy acestream link';
         aceStreamButton.addEventListener('click', () => {
   
           let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
           clipboardTextarea.value = stream.aceStreams[j].uri;
+          clipboardTextarea.disabled = false;
+
           let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
           streamTypeDiv.innerText = 'acestream';
+          DomHelper.showElement(streamTypeDiv);
+
           let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
           DomHelper.showElement(clipboardWrap, 'flex');
   
           clipboardTextarea.select();
           document.execCommand('copy');
   
+        }, false);
+        aceStreamButton.addEventListener('mouseover', () => {
+          DomHelper.showStreamTitle(stream.aceStreams[j].title);
         }, false);
   
         linksTd.appendChild(aceStreamButton);
@@ -251,7 +260,6 @@ class App {
       for (let j = 0; j < stream.sopCastStreams.length; j++) {
         let sopCastStreamButton = document.createElement('button');
         sopCastStreamButton.innerText = (j + 1).toString();
-        sopCastStreamButton.title = stream.sopCastStreams[j].title;
         DomHelper.addClass(sopCastStreamButton, 'sopcast-stream-button');
         sopCastStreamButton.dataset.title = 'Copy sopcast link';
         sopCastStreamButton.addEventListener('click', () => {
@@ -266,6 +274,9 @@ class App {
           clipboardTextarea.select();
           document.execCommand('copy');
   
+        }, false);
+        sopCastStreamButton.addEventListener('mouseover', () => {
+          DomHelper.showStreamTitle(stream.sopCastStreams[j].title);
         }, false);
   
         linksTd.appendChild(sopCastStreamButton);
@@ -396,6 +407,15 @@ class DomHelper {
     messageDiv.innerText = '';
     messageDiv.className = '';
     DomHelper.hideElement(messageDiv);
+  }
+
+  static showStreamTitle(title: string): void {
+    let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
+    DomHelper.hideElement(streamTypeDiv);
+
+    let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
+    clipboardTextarea.value = title;
+    clipboardTextarea.disabled = true;
   }
 
   static removeEventHandlers(element: Element): void {
