@@ -149,7 +149,7 @@ class App {
           if (streams.length > 0) {
             this.populateStreamsTable(streams);
           } else {
-            DomHelper.showMessage('There are currently no available streams for this match.', 'info');
+            DomHelper.showInfoMessage('There are currently no available streams for this match.');
           }
       
           let searchInput = <HTMLInputElement>document.getElementById('search');
@@ -166,7 +166,12 @@ class App {
           DomHelper.hideElement(loadingDiv);
           DomHelper.showElement(kickOffTimeDiv);
       
-        }, 'An error occurred while loading the streams.');
+        }, () => { 
+          let matchesTable = document.getElementById('matches');
+          DomHelper.hideElement(matchesTable);
+        
+          DomHelper.showErrorMessage('An error occurred while loading the streams.'); 
+        });
       
       }, false);
   
@@ -328,34 +333,35 @@ class App {
 
 class HttpClient {
 
-  getJson(url: string, callback: any, errorMessage: string): void {
-
-    try {
-      let request = new XMLHttpRequest();
-    
-      request.onreadystatechange = () =>
+  getJson(url: string, successCallback: (result: any) => void, errorCallback: (statusCode: number) => void): void {
+    let request = new XMLHttpRequest();
+  
+    request.onreadystatechange = () =>
+    {
+      if (request.readyState == 4)
       {
-        if (request.readyState == 4)
-        {
-          if (request.status == 200) {
-            callback(JSON.parse(request.responseText));
-          } else {
-            DomHelper.showMessage(errorMessage, 'error');
-          }        
+        if (request.status == 200) {
+          successCallback(JSON.parse(request.responseText));
+        } else {
+          errorCallback(request.status);
         }
-      };
-      
-      request.open('GET', url + '.json');
-      request.send();
-    }
-    catch (error) {
-      DomHelper.showMessage(errorMessage, 'error');
-    }
+      }
+    };
+    
+    request.open('GET', url + '.json');
+    request.send();
   }
 
 }
 
 class DomHelper {
+  private static showMessage(message: string, type: string): void {
+    let messageDiv = document.getElementById('message');
+    messageDiv.innerText = message;
+    DomHelper.addClass(messageDiv, type);
+    DomHelper.showElement(messageDiv);
+  }
+
   static addClass(element: any, className: string): void {
     if (element.className.trim() === '') {
       element.className = className;
@@ -377,11 +383,12 @@ class DomHelper {
     element.style.display = display || 'block';
   }
 
-  static showMessage(message: string, type: string): void {
-    let messageDiv = document.getElementById('message');
-    messageDiv.innerText = message;
-    DomHelper.addClass(messageDiv, type);
-    DomHelper.showElement(messageDiv);
+  static showInfoMessage(message: string): void {
+    this.showMessage(message, 'info');
+  }
+
+  static showErrorMessage(message: string): void {
+    this.showMessage(message, 'error');
   }
 
   static hideMessage(): void {

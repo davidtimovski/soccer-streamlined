@@ -13,7 +13,7 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   if (matches.length > 0) {
     app.populateMatchesTable(matches);
   } else {
-    DomHelper.showMessage('There are currently no available matches.', 'info');
+    DomHelper.showInfoMessage('There are currently no available matches.');
   }
 
   let loadingGif = document.getElementById('loading');
@@ -49,4 +49,9 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
     }
   });
 
-}, 'An error occurred while loading the matches.');
+}, () => { 
+  let loadingGif = document.getElementById('loading');
+  DomHelper.hideElement(loadingGif);
+
+  DomHelper.showErrorMessage('An error occurred while loading the matches.'); 
+});
