@@ -77,32 +77,27 @@ class ThreadInfo {
 
 class App {
 
-  backToMatches(): void {
-    DomHelper.hideMessage();
-  
-    let streamsWrap = document.getElementById('streams-wrap');
-    DomHelper.hideElement(streamsWrap);
-  
-    let streamsTable = document.getElementById('streams');
-    streamsTable.innerHTML = '';
-  
-    let matchesTable = document.getElementById('matches');
-    DomHelper.showElement(matchesTable);
+  constructor(public domHelper: DomHelper) {}
 
-    let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
-    DomHelper.hideElement(streamTypeDiv);
+  backToMatches(): void {
+    domHelper.hideMessage();
   
-    let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
-    clipboardTextarea.value = '';
-    clipboardTextarea.disabled = true;
+    DomHelper.hideElement(domHelper.streamsWrap);
+  
+    domHelper.streamsTable.innerHTML = '';
+  
+    DomHelper.showElement(domHelper.matchesTable);
+
+    DomHelper.hideElement(domHelper.streamTypeDiv);
+  
+    domHelper.clipboardTextarea.value = '';
+    domHelper.clipboardTextarea.disabled = true;
 
     let threadButton = document.getElementById('thread-button');
     DomHelper.removeEventHandlers(threadButton);
   }
   
   populateMatchesTable(matches: Match[]): void {
-    let matchesTable = document.getElementById('matches');
-  
     for (let match of matches) {
       let matchLoadingDiv = document.createElement('div');
       DomHelper.addClass(matchLoadingDiv, 'loading');
@@ -148,30 +143,32 @@ class App {
           this.populateStreamDetails(threadInfo);
       
           if (streams.length > 0) {
+            DomHelper.showElement(domHelper.clipboardWrap, 'flex');
+
             this.populateStreamsTable(streams);
           } else {
-            DomHelper.showInfoMessage('There are currently no available streams for this match.');
+            DomHelper.hideElement(domHelper.clipboardWrap);
+            
+            this.domHelper.showInfoMessage('There are currently no available streams for this match.');
           }
       
-          let searchInput = <HTMLInputElement>document.getElementById('search');
-          searchInput.dataset.visible = 'false';
-          DomHelper.hideElement(searchInput);
+          domHelper.searchInput.dataset.visible = 'false';
+          DomHelper.hideElement(domHelper.searchInput);
           this.resetMatchesFilter();
       
-          let matchesTable = document.getElementById('matches');
-          DomHelper.hideElement(matchesTable);
+          DomHelper.hideElement(domHelper.matchesTable);
       
-          let streamsWrap = document.getElementById('streams-wrap');
-          DomHelper.showElement(streamsWrap);
+          DomHelper.showElement(domHelper.streamsWrap);
       
           DomHelper.hideElement(loadingDiv);
           DomHelper.showElement(kickOffTimeDiv);
       
         }, () => { 
-          let matchesTable = document.getElementById('matches');
-          DomHelper.hideElement(matchesTable);
+          DomHelper.hideElement(domHelper.clipboardWrap);
+
+          DomHelper.hideElement(domHelper.matchesTable);
         
-          DomHelper.showErrorMessage('An error occurred while loading the streams.'); 
+          this.domHelper.showErrorMessage('An error occurred while loading the streams.'); 
         });
       
       }, false);
@@ -184,16 +181,14 @@ class App {
       tr.appendChild(firstTd);
       tr.appendChild(gameTd);
 
-      matchesTable.appendChild(tr);
+      domHelper.matchesTable.appendChild(tr);
     }
   }
 
   populateStreamDetails(threadInfo: ThreadInfo): void {
-    let backButton = document.getElementById('back-button');
-    backButton.addEventListener('click', this.backToMatches, false);
+    domHelper.backButton.addEventListener('click', this.backToMatches, false);
   
-    let threadInfoDiv = document.getElementById('thread-info');
-    threadInfoDiv.innerHTML = threadInfo.titleHtml;
+    domHelper.threadInfoDiv.innerHTML = threadInfo.titleHtml;
   
     let threadButton = document.getElementById('thread-button');
     threadButton.addEventListener('click', () => {
@@ -202,22 +197,20 @@ class App {
   }
   
   populateStreamsTable(streams: Stream[]): void {
-    let streamsTable = document.getElementById('streams');
-
     for (let stream of streams) {
       let linksTd = document.createElement('td');
       DomHelper.addClass(linksTd, 'links');
   
       // Links
-      for (let j = 0; j < stream.links.length; j++) {
+      for (let i = 0; i < stream.links.length; i++) {
         let linkButton = document.createElement('button');
-        linkButton.innerText = (j + 1).toString();
+        linkButton.innerText = (i + 1).toString();
         DomHelper.addClass(linkButton, 'link-button');
         linkButton.addEventListener('click', () => {
-          chrome.tabs.create({ url: stream.links[j].uri, active: false });
+          chrome.tabs.create({ url: stream.links[i].uri, active: false });
         }, false);
         linkButton.addEventListener('mouseover', () => {
-          DomHelper.showStreamTitle(stream.links[j].title);
+          DomHelper.showStreamTitle(stream.links[i].title);
         }, false);
 
         let rowDiv = document.createElement('div');
@@ -227,56 +220,52 @@ class App {
       }
   
       // Ace Streams
-      for (let j = 0; j < stream.aceStreams.length; j++) {
+      for (let i = 0; i < stream.aceStreams.length; i++) {
         let aceStreamButton = document.createElement('button');
-        aceStreamButton.innerText = (j + 1).toString();
+        aceStreamButton.innerText = (i + 1).toString();
         DomHelper.addClass(aceStreamButton, 'ace-stream-button');
         aceStreamButton.dataset.title = 'Copy acestream link';
         aceStreamButton.addEventListener('click', () => {
   
-          let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
-          clipboardTextarea.value = stream.aceStreams[j].uri;
-          clipboardTextarea.disabled = false;
+          domHelper.clipboardTextarea.value = stream.aceStreams[i].uri;
+          domHelper.clipboardTextarea.disabled = false;
 
-          let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
-          streamTypeDiv.innerText = 'acestream';
-          DomHelper.showElement(streamTypeDiv);
+          domHelper.streamTypeDiv.innerText = 'acestream';
+          DomHelper.showElement(domHelper.streamTypeDiv);
 
-          let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
-          DomHelper.showElement(clipboardWrap, 'flex');
+          DomHelper.showElement(domHelper.clipboardWrap, 'flex');
   
-          clipboardTextarea.select();
+          domHelper.clipboardTextarea.select();
           document.execCommand('copy');
   
         }, false);
         aceStreamButton.addEventListener('mouseover', () => {
-          DomHelper.showStreamTitle(stream.aceStreams[j].title);
+          DomHelper.showStreamTitle(stream.aceStreams[i].title);
         }, false);
   
         linksTd.appendChild(aceStreamButton);
       }
   
       // SopCast Streams
-      for (let j = 0; j < stream.sopCastStreams.length; j++) {
+      for (let i = 0; i < stream.sopCastStreams.length; i++) {
         let sopCastStreamButton = document.createElement('button');
-        sopCastStreamButton.innerText = (j + 1).toString();
+        sopCastStreamButton.innerText = (i + 1).toString();
         DomHelper.addClass(sopCastStreamButton, 'sopcast-stream-button');
         sopCastStreamButton.dataset.title = 'Copy sopcast link';
         sopCastStreamButton.addEventListener('click', () => {
 
-          let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
-          clipboardTextarea.value = stream.sopCastStreams[j].uri;
-          let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
-          streamTypeDiv.innerText = 'sopcast';
-          let clipboardWrap = document.querySelectorAll('.clipboard-wrap')[0];
-          DomHelper.showElement(clipboardWrap, 'flex');
+          domHelper.clipboardTextarea.value = stream.sopCastStreams[i].uri;
+
+          domHelper.streamTypeDiv.innerText = 'sopcast';
+
+          DomHelper.showElement(domHelper.clipboardWrap, 'flex');
   
-          clipboardTextarea.select();
+          domHelper.clipboardTextarea.select();
           document.execCommand('copy');
   
         }, false);
         sopCastStreamButton.addEventListener('mouseover', () => {
-          DomHelper.showStreamTitle(stream.sopCastStreams[j].title);
+          DomHelper.showStreamTitle(stream.sopCastStreams[i].title);
         }, false);
   
         linksTd.appendChild(sopCastStreamButton);
@@ -297,7 +286,7 @@ class App {
       tr.appendChild(linksTd);
       tr.appendChild(authorTd);
   
-      streamsTable.appendChild(tr);
+      domHelper.streamsTable.appendChild(tr);
     }
   }
 
@@ -316,8 +305,7 @@ class App {
   }
   
   resetMatchesFilter(): void {
-    let searchInput = <HTMLInputElement>document.getElementById('search');
-    searchInput.value = '';
+    domHelper.searchInput.value = '';
   
     let matchesTr = document.querySelectorAll('#matches tr');
     for (let i = 0; i < matchesTr.length; i++) {
@@ -366,11 +354,31 @@ class HttpClient {
 }
 
 class DomHelper {
-  private static showMessage(message: string, type: string): void {
-    let messageDiv = document.getElementById('message');
-    messageDiv.innerText = message;
-    DomHelper.addClass(messageDiv, type);
-    DomHelper.showElement(messageDiv);
+  private messageDiv = document.getElementById('message');
+
+  loadingGif: HTMLElement = document.getElementById('loading');
+  searchInput: HTMLInputElement = <HTMLInputElement>document.getElementById('search');
+  matchesTable: HTMLElement = document.getElementById('matches');
+  streamsWrap: HTMLElement = document.getElementById('streams-wrap');
+  backButton: HTMLElement = document.getElementById('back-button');
+  threadInfoDiv: HTMLElement = document.getElementById('thread-info');
+  clipboardWrap: HTMLElement = document.getElementById('clipboard-wrap');
+  streamTypeDiv: HTMLElement = document.getElementById('stream-type');
+  clipboardTextarea: HTMLTextAreaElement = <HTMLTextAreaElement>document.getElementById('clipboard');
+  streamsTable: HTMLElement = document.getElementById('streams');
+
+  showInfoMessage(message: string): void {
+    this.showMessage(message, 'info');
+  }
+
+  showErrorMessage(message: string): void {
+    this.showMessage(message, 'error');
+  }
+
+  hideMessage(): void {
+    this.messageDiv.innerText = '';
+    this.messageDiv.className = '';
+    DomHelper.hideElement(this.messageDiv);
   }
 
   static addClass(element: any, className: string): void {
@@ -394,33 +402,22 @@ class DomHelper {
     element.style.display = display || 'block';
   }
 
-  static showInfoMessage(message: string): void {
-    this.showMessage(message, 'info');
-  }
-
-  static showErrorMessage(message: string): void {
-    this.showMessage(message, 'error');
-  }
-
-  static hideMessage(): void {
-    let messageDiv = document.getElementById('message');
-    messageDiv.innerText = '';
-    messageDiv.className = '';
-    DomHelper.hideElement(messageDiv);
-  }
-
   static showStreamTitle(title: string): void {
-    let streamTypeDiv = <HTMLDivElement>document.querySelectorAll('.clipboard-wrap .stream-type')[0];
-    DomHelper.hideElement(streamTypeDiv);
+    DomHelper.hideElement(domHelper.streamTypeDiv);
 
-    let clipboardTextarea = <HTMLTextAreaElement>document.getElementById('clipboard');
-    clipboardTextarea.value = title;
-    clipboardTextarea.disabled = true;
+    domHelper.clipboardTextarea.value = title;
+    domHelper.clipboardTextarea.disabled = true;
   }
 
   static removeEventHandlers(element: Element): void {
     let clone = element.cloneNode(true);
     element.parentNode.replaceChild(clone, element);
+  }
+
+  private showMessage(message: string, type: string): void {
+    this.messageDiv.innerText = message;
+    DomHelper.addClass(this.messageDiv, type);
+    DomHelper.showElement(this.messageDiv);
   }
 }
 

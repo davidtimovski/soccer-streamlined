@@ -36,7 +36,7 @@ tr, td {
     width: 100%;
     min-width: 200px;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid #e2e2e2;
     outline: none;
     padding: 4px 6px;
     margin-bottom: 5px;
@@ -64,7 +64,7 @@ tr, td {
     font-size: 0;
 }
 #matches tr td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e2e2e2;
     padding: 0;
     font-size: 14px;
 }
@@ -214,7 +214,7 @@ tr, td {
 #streams-wrap header {
     display: table;
     width: 100%;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e2e2e2;
     margin-bottom: 10px;
 }
 #streams-wrap header .header-part {
@@ -230,7 +230,7 @@ tr, td {
 }
 #streams-wrap header button {
     background: #7fccff;
-    border: 1px solid #ddd;
+    border: 1px solid #e2e2e2;
     outline: none;
     padding: 5px 10px;
     color: #fff;
@@ -240,7 +240,7 @@ tr, td {
 }
 
 #streams tr td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #e2e2e2;
     padding-top: 3px;
 }
 #streams tr:last-child td {
@@ -255,7 +255,7 @@ tr, td {
 .links button {
     display: inline-block;
     width: 28px;
-    border: 1px solid #ddd;
+    border: 1px solid #e2e2e2;
     outline: none;
     padding: 3px 0;
     margin: 0 3px 3px 0;
@@ -266,7 +266,7 @@ tr, td {
 }
 
 .author {
-    border-left: 1px solid #ddd;
+    border-left: 1px solid #e2e2e2;
     padding: 0 0 3px 3px;
     text-align: center;
 }
@@ -303,23 +303,23 @@ tr, td {
     background: #c161a1;
 }
 
-.clipboard-wrap {
+#clipboard-wrap {
     display: flex;
 }
-.clipboard-wrap .stream-type {
+#stream-type {
     display: none;
     flex: 1;
     background: #f0f0f0;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #e2e2e2;
     border-right: none;
     padding: 0 7px;
     line-height: 25px;
 }
-.clipboard-wrap textarea {
+#clipboard-wrap textarea {
     width: 100%;
     height: 28px;
     box-sizing: border-box;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #e2e2e2;
     outline: none;
     padding: 3px 5px;
     font-family: inherit;
@@ -327,6 +327,6 @@ tr, td {
     color: #444;
     resize: none;
 }
-.clipboard-wrap textarea:disabled {
+#clipboard-wrap textarea:disabled {
     background: #f0f0f0;
 }

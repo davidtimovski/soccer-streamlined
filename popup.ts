@@ -1,10 +1,11 @@
 /// <reference path="./lib/classes.ts" />
 
 let httpClient = new HttpClient();
+let domHelper = new DomHelper();
 
 httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
 
-  let app = new App();
+  let app = new App(domHelper);
   let parser = new Parser();
 
   let posts = result.data.children;
@@ -13,14 +14,12 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   if (matches.length > 0) {
     app.populateMatchesTable(matches);
   } else {
-    DomHelper.showInfoMessage('There are currently no available matches.');
+    domHelper.showInfoMessage('There are currently no available matches.');
   }
 
-  let loadingGif = document.getElementById('loading');
-  DomHelper.hideElement(loadingGif);
+  DomHelper.hideElement(domHelper.loadingGif);
 
-  let matchesTable = document.getElementById('matches');
-  DomHelper.showElement(matchesTable);
+  DomHelper.showElement(domHelper.matchesTable);
 
   let searchInput = <HTMLInputElement>document.getElementById('search');
   searchInput.addEventListener('keyup', () => {
@@ -36,7 +35,7 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   body.addEventListener('keyup', event => {
     // If a letter was typed
     let typingRegex: RegExp = /^[a-zA-Z]$/;
-    if (typingRegex.exec(event.key) !== null && matchesTable.style.display === 'block') {
+    if (typingRegex.exec(event.key) !== null && domHelper.matchesTable.style.display === 'block') {
       if (searchInput.dataset.visible === 'false') {
         searchInput.dataset.visible = 'true';
         DomHelper.showElement(searchInput);
@@ -50,8 +49,7 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   });
 
 }, () => { 
-  let loadingGif = document.getElementById('loading');
-  DomHelper.hideElement(loadingGif);
+  DomHelper.hideElement(domHelper.loadingGif);
 
-  DomHelper.showErrorMessage('An error occurred while loading the matches.'); 
+  domHelper.showErrorMessage('An error occurred while loading the matches.'); 
 });
