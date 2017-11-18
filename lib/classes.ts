@@ -255,8 +255,10 @@ class App {
         sopCastStreamButton.addEventListener('click', () => {
 
           domHelper.clipboardTextarea.value = stream.sopCastStreams[i].uri;
+          domHelper.clipboardTextarea.disabled = false;
 
           domHelper.streamTypeDiv.innerText = 'sopcast';
+          DomHelper.showElement(domHelper.streamTypeDiv);
 
           DomHelper.showElement(domHelper.clipboardWrap, 'flex');
   
