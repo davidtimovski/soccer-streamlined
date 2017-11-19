@@ -103,6 +103,9 @@ tr, td {
     text-indent: -999em;
     vertical-align: bottom;
 }
+.league-icon.generic {
+    background-position: 0 -611px;
+}
 .league-icon.premierleague {
     background-position: 0 -475px;
 }
@@ -132,6 +135,9 @@ tr, td {
 }
 .league-icon.aleague {
     background-position: 0 -16px;
+}
+.league-icon.swisssuperleague {
+    background-position: 0 -560px;
 }
 .league-icon.facup {
     background-position: 0 -322px;
