@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Soccer Streamlined",
-  "version": "1.10",
+  "version": "1.11",
   "description": "Find a soccer stream on reddit.com/r/soccerstreams",
   "icons": {
     "16": "images/icon-16.png",
