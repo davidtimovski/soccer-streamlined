@@ -142,6 +142,9 @@ tr, td {
 .league-icon.facup {
     background-position: 0 -322px;
 }
+.league-icon.eflcup {
+    background-position: 0 -1121px;
+}
 .league-icon.championsleague {
     background-position: 0 -84px;
 }
