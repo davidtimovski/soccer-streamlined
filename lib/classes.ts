@@ -90,7 +90,7 @@ class App {
 
     DomHelper.hideElement(domHelper.streamTypeDiv);
   
-    domHelper.clipboardTextarea.value = '';
+    domHelper.clipboardTextarea.value = 'Pick a stream';
     domHelper.clipboardTextarea.disabled = true;
 
     let threadButton = document.getElementById('thread-button');
@@ -212,6 +212,9 @@ class App {
         linkButton.addEventListener('mouseover', () => {
           DomHelper.showStreamTitle(stream.links[i].title);
         }, false);
+        linkButton.addEventListener('mouseout', () => {
+          DomHelper.showStreamTitle('');
+        }, false);
 
         let rowDiv = document.createElement('div');
         rowDiv.appendChild(linksTd);
@@ -242,6 +245,9 @@ class App {
         aceStreamButton.addEventListener('mouseover', () => {
           DomHelper.showStreamTitle(stream.aceStreams[i].title);
         }, false);
+        aceStreamButton.addEventListener('mouseout', () => {
+          DomHelper.showStreamTitle('');
+        }, false);
   
         linksTd.appendChild(aceStreamButton);
       }
@@ -268,6 +274,9 @@ class App {
         }, false);
         sopCastStreamButton.addEventListener('mouseover', () => {
           DomHelper.showStreamTitle(stream.sopCastStreams[i].title);
+        }, false);
+        sopCastStreamButton.addEventListener('mouseout', () => {
+          DomHelper.showStreamTitle('');
         }, false);
   
         linksTd.appendChild(sopCastStreamButton);
