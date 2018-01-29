@@ -359,7 +359,7 @@ tr, td {
     box-sizing: border-box;
     border: 1px solid #e2e2e2;
     outline: none;
-    padding: 3px 5px;
+    padding: 4px 5px 2px;
     font-family: inherit;
     text-align: center;
     color: #444;

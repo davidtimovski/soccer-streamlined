@@ -246,7 +246,9 @@ class App {
           DomHelper.showStreamTitle(stream.aceStreams[i].title);
         }, false);
         aceStreamButton.addEventListener('mouseout', () => {
-          DomHelper.showStreamTitle('');
+          if (domHelper.clipboardTextarea.disabled) {
+            DomHelper.showStreamTitle('');
+          }
         }, false);
   
         linksTd.appendChild(aceStreamButton);
@@ -276,7 +278,9 @@ class App {
           DomHelper.showStreamTitle(stream.sopCastStreams[i].title);
         }, false);
         sopCastStreamButton.addEventListener('mouseout', () => {
-          DomHelper.showStreamTitle('');
+          if (domHelper.clipboardTextarea.disabled) {
+            DomHelper.showStreamTitle('');
+          }
         }, false);
   
         linksTd.appendChild(sopCastStreamButton);
