@@ -65,7 +65,6 @@ tr, td {
 }
 #matches tr td {
     border-bottom: 1px solid #e2e2e2;
-    padding: 0;
     font-size: 14px;
 }
 #matches tr td:first-child {
@@ -295,8 +294,9 @@ tr, td {
     width: 28px;
     border: 1px solid #e2e2e2;
     outline: none;
-    padding: 3px 0;
+    padding: 0;
     margin: 0 3px 3px 0;
+    line-height: 23px;
     color: #fff;
 }
 .links button:nth-child(10n+10) {
@@ -313,7 +313,8 @@ tr, td {
     background: #f0f0f0;
     border: none;
     outline: none;
-    padding: 4px 8px;
+    padding: 0 8px;
+    line-height: 25px;
     color: #444;
 }
 .author button:hover {
@@ -359,8 +360,11 @@ tr, td {
     box-sizing: border-box;
     border: 1px solid #e2e2e2;
     outline: none;
-    padding: 4px 5px 2px;
+    padding: 0 5px;
+    margin: 0;
+    line-height: 26px;
     font-family: inherit;
+    font-size: inherit;
     text-align: center;
     color: #444;
     resize: none;
