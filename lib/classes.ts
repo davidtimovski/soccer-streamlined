@@ -42,7 +42,7 @@ class AceStream {
     let matches = this.aceStreamsRegex.exec(search);
 
     if (matches !== null) {
-      let preText = matches[1].replace(/&gt;/g, '').trim();
+      let preText = matches[1].replace(/&gt;|\|/g, '').trim();
       let postText = matches[4].replace(/&gt;/g, '').trim();
       let streamId = matches[3];
 
@@ -61,7 +61,7 @@ class SopCast {
     let matches = this.sopCastStreamsRegex.exec(search);
 
     if (matches !== null) {
-      let preText = matches[1].replace(/&gt;/g, '').trim();
+      let preText = matches[1].replace(/&gt;|\|/g, '').trim();
       let postText = matches[4].replace(/&gt;/g, '').trim();
       let uri = matches[3];
 
@@ -125,6 +125,8 @@ class App {
 
       matchButton.addEventListener('click', () => {
 
+        matchButton.disabled = true;
+
         let kickOffTimeDiv = document.querySelectorAll(`#matches tr[data-id="${match.id}"] .kickoff-time`)[0];
         let loadingDiv = document.querySelectorAll(`#matches tr[data-id="${match.id}"] .loading`)[0];
     
@@ -162,15 +164,19 @@ class App {
       
           DomHelper.hideElement(loadingDiv);
           DomHelper.showElement(kickOffTimeDiv);
-      
+
+          matchButton.disabled = false;
+
         }, () => { 
+          matchButton.disabled = false;
+          
           DomHelper.hideElement(domHelper.clipboardWrap);
 
           DomHelper.hideElement(domHelper.matchesTable);
         
           this.domHelper.showErrorMessage('An error occurred while loading the streams.'); 
         });
-      
+
       }, false);
   
       gameTd.appendChild(matchButton);
