@@ -195,6 +195,9 @@ tr, td {
 .league-icon.coupedefrance {
     background-position: 0 -220px;
 }
+.league-icon.afcchampionsleague {
+    background-position: 0 2px;
+}
 .league-icon.tippeligaen {
     background-position: 0 -917px;
 }
