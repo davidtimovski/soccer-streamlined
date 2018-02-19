@@ -446,7 +446,7 @@ class Parser {
 
   getMatchesFromPosts(posts: any[]): Match[] {
     let matches = new Array<Match>();
-    
+
     for (let post of posts) {
       let kickOffTime = this.getKickOffTimeFromTitle(post.data.title);
 
@@ -465,8 +465,18 @@ class Parser {
 
       matches.push(match);
     }
-  
-    return matches;
+
+    var kickOffTimeAscending = (a: Match, b: Match): number => {
+      if (a.kickOffTime < b.kickOffTime) {
+        return -1;
+      }
+      if (a.kickOffTime > b.kickOffTime) {
+        return 1;
+      }
+      return 0;
+    };
+
+    return matches.sort(kickOffTimeAscending);
   }
 
   greedyRegexMatch(search: string, regex: RegExp, matchingGroup: number, result: any[]): void {
