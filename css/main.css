@@ -204,6 +204,9 @@ tr, td {
 .league-icon.tippeligaen {
     background-position: 0 -917px;
 }
+.league-icon.autbundesliga {
+    background-position: 0 -866px;
+}
 .league-icon.nasl {
     background-position: 0 -441px;
 }
