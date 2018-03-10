@@ -145,10 +145,12 @@ class App {
           this.populateStreamDetails(threadInfo);
       
           if (streams.length > 0) {
+            DomHelper.showElement(domHelper.legend);
             DomHelper.showElement(domHelper.clipboardWrap, 'flex');
 
             this.populateStreamsTable(streams);
           } else {
+            DomHelper.hideElement(domHelper.legend);
             DomHelper.hideElement(domHelper.clipboardWrap);
             
             this.domHelper.showInfoMessage('There are currently no available streams for this match.');
@@ -383,6 +385,7 @@ class DomHelper {
   streamsWrap: HTMLElement = document.getElementById('streams-wrap');
   backButton: HTMLElement = document.getElementById('back-button');
   threadInfoDiv: HTMLElement = document.getElementById('thread-info');
+  legend: HTMLElement = document.getElementById('legend');
   clipboardWrap: HTMLElement = document.getElementById('clipboard-wrap');
   streamTypeDiv: HTMLElement = document.getElementById('stream-type');
   clipboardTextarea: HTMLTextAreaElement = <HTMLTextAreaElement>document.getElementById('clipboard');

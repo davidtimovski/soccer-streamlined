@@ -46,7 +46,7 @@ tr, td {
 
 #message {
     display: none;
-    padding: 0 5px 2px 5px;
+    padding: 2px 5px 4px 5px;
     white-space: nowrap;
     text-align: center;
 }
@@ -264,11 +264,12 @@ tr, td {
 #streams-wrap header button:hover {
     background: #77c4f7;
 }
-#streams-wrap .legend {
+
+#legend {
     padding-bottom: 4px;
     font-size: 0;
 }
-#streams-wrap .legend-item {
+#legend .legend-item {
     display: inline-block;
     width: 31%;
     border-bottom: 3px solid;
@@ -276,15 +277,15 @@ tr, td {
     font-size: 14px;
     text-align: center;
 }
-#streams-wrap .legend-item.link {
+#legend .legend-item.link {
     margin-right: 3.5%;
     border-bottom-color: #80cdff;
 }
-#streams-wrap .legend-item.acestream {
+#legend .legend-item.acestream {
     margin-right: 3.5%;
     border-bottom-color: #bdd990;
 }
-#streams-wrap .legend-item.sopcast {
+#legend .legend-item.sopcast {
     border-bottom-color: #e181c1;
 }
 
