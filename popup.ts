@@ -1,11 +1,10 @@
-/// <reference path="./lib/classes.ts" />
+/// <reference path="./lib/app.ts" />
 
 let httpClient = new HttpClient();
-let domHelper = new DomHelper();
 
 httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
 
-  let app = new App(domHelper);
+  let app = new App();
   let parser = new Parser();
 
   let posts = result.data.children;
@@ -14,12 +13,12 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   if (matches.length > 0) {
     app.populateMatchesTable(matches);
   } else {
-    domHelper.showInfoMessage('There are currently no available matches.');
+    DomHelper.showInfoMessage('There are currently no available matches.');
   }
 
-  DomHelper.hideElement(domHelper.loadingGif);
+  DomHelper.hideElement(DomHelper.loadingGif);
 
-  DomHelper.showElement(domHelper.matchesTable);
+  DomHelper.showElement(DomHelper.matchesTable);
 
   let searchInput = <HTMLInputElement>document.getElementById('search');
   searchInput.addEventListener('keyup', () => {
@@ -35,7 +34,7 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   body.addEventListener('keyup', event => {
     // If a letter was typed
     let typingRegex: RegExp = /^[a-zA-Z]$/;
-    if (typingRegex.exec(event.key) !== null && domHelper.matchesTable.style.display === 'block') {
+    if (typingRegex.exec(event.key) !== null && DomHelper.matchesTable.style.display === 'block') {
       if (searchInput.dataset.visible === 'false') {
         searchInput.dataset.visible = 'true';
         DomHelper.showElement(searchInput);
@@ -49,7 +48,7 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
   });
 
 }, () => { 
-  DomHelper.hideElement(domHelper.loadingGif);
+  DomHelper.hideElement(DomHelper.loadingGif);
 
-  domHelper.showErrorMessage('An error occurred while loading the matches.'); 
+  DomHelper.showErrorMessage('An error occurred while loading the matches.'); 
 });
