@@ -4,10 +4,10 @@ let httpClient = new HttpClient();
 
 httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
 
+  let posts = result.data.children;
+
   let app = new App();
   let parser = new Parser();
-
-  let posts = result.data.children;
   let matches = parser.getMatchesFromPosts(posts);
   
   if (matches.length > 0) {

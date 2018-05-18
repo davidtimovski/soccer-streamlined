@@ -14,6 +14,12 @@ class Parser {
         continue;
       }
 
+      // Skip matches that started more than 4 hours ago
+      let hours = (kickOffTime.getTime() - new Date().getTime()) / 3600000;
+      if (hours < -4) {
+        continue;
+      }
+
       let match = new Match();
       match.id = post.data.id;
       match.title = this.getTitleWithoutTime(post.data.title);
@@ -25,7 +31,7 @@ class Parser {
       matches.push(match);
     }
 
-    var kickOffTimeAscending = (a: Match, b: Match): number => {
+    let kickOffTimeAscending = (a: Match, b: Match): number => {
       if (a.kickOffTime < b.kickOffTime) {
         return -1;
       }
@@ -36,15 +42,6 @@ class Parser {
     };
 
     return matches.sort(kickOffTimeAscending);
-  }
-
-  greedyRegexMatch(search: string, regex: RegExp, matchingGroup: number, result: any[]): void {
-    let matches = regex.exec(search);
-
-    if (matches !== null) {
-      result.push(matches[matchingGroup]);
-      this.greedyRegexMatch(search, regex, matchingGroup, result);
-    }
   }
 
   getStreamsFromComments(comments: any[], postUrl: string): Stream[] {
@@ -75,7 +72,16 @@ class Parser {
     return streams;
   }
 
-  getKickOffTimeFromTitle(title: string): any {
+  private greedyRegexMatch(search: string, regex: RegExp, matchingGroup: number, result: any[]): void {
+    let matches = regex.exec(search);
+
+    if (matches !== null) {
+      result.push(matches[matchingGroup]);
+      this.greedyRegexMatch(search, regex, matchingGroup, result);
+    }
+  }
+
+  private getKickOffTimeFromTitle(title: string): any {
     if (title.indexOf('[') === -1) {
       return false;
     }
@@ -96,14 +102,14 @@ class Parser {
     return new Date(utc);
   }
 
-  getTitleWithoutTime(title: string): string {
+  private getTitleWithoutTime(title: string): string {
     let startingPosition: number = title.indexOf(']');
     let titleWithoutTime: string = title.substring(startingPosition + 1, title.length).trim();
     let cleanUpTitleRegex: RegExp = /([^a-zA-Z]*?)(?=[a-zA-Z])/;
     return titleWithoutTime.replace(cleanUpTitleRegex, '');
   }
 
-  formatKickOffTime(date: Date): string {
+  private formatKickOffTime(date: Date): string {
     let hours: string = '0' + date.getHours();
     hours = hours.substr(hours.length - 2);
   
