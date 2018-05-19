@@ -14,12 +14,6 @@ class Parser {
         continue;
       }
 
-      // Skip matches that started more than 4 hours ago
-      let hours = (kickOffTime.getTime() - new Date().getTime()) / 3600000;
-      if (hours < -4) {
-        continue;
-      }
-
       let match = new Match();
       match.id = post.data.id;
       match.title = this.getTitleWithoutTime(post.data.title);
@@ -85,7 +79,7 @@ class Parser {
     if (title.indexOf('[') === -1) {
       return false;
     }
-  
+
     let startingPosition: number = title.indexOf('[') + 1;
     let endPosition: number = title.indexOf(']', startingPosition);
     let hoursAndMinutesText: string = title.substring(startingPosition, endPosition);
