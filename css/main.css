@@ -222,6 +222,9 @@ tr, td {
 .league-icon.fifa {
     background-position: 0px -645px;
 }
+.league-icon.wc18 {
+    background-position: 0px -1139px;
+}
 .league-icon.internationalfriendlies {
     background-position: 0px -356px;
 }
