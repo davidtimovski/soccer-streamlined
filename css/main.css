@@ -231,6 +231,9 @@ tr, td {
 .league-icon.olympics {
     background-position: 0px -458px;
 }
+.league-icon.championscup {
+    background-position: 0px -50px;
+}
 #matches tr td button {
     display: block;
     width: 100%;
