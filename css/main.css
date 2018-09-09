@@ -219,6 +219,9 @@ tr, td {
 .league-icon.nasl {
     background-position: 0 -441px;
 }
+.league-icon.caf {
+    background-position: 0 -730px;
+}
 .league-icon.fifa {
     background-position: 0px -645px;
 }
