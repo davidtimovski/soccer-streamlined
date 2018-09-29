@@ -237,6 +237,9 @@ tr, td {
 .league-icon.championscup {
     background-position: 0px -50px;
 }
+.league-icon.jleague {
+    background-position: 0 -373px;
+}
 #matches tr td button {
     display: block;
     width: 100%;
