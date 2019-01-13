@@ -20,6 +20,11 @@ httpClient.getJson('https://www.reddit.com/r/soccerstreams', result => {
 
   DomHelper.showElement(DomHelper.matchesTable);
 
+  DomHelper.soccerStreamsLink.addEventListener('click', () => {
+    chrome.tabs.create({ url: 'https://www.reddit.com/r/soccerstreams', active: true });
+  }, false);
+  DomHelper.showElement(DomHelper.soccerStreamsLinkWrap);
+
   let searchInput = <HTMLInputElement>document.getElementById('search');
   searchInput.addEventListener('keyup', () => {
     app.filterMatches(searchInput.value);

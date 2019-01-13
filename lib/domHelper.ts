@@ -4,6 +4,8 @@ class DomHelper {
   static loadingGif: HTMLElement = document.getElementById('loading');
   static searchInput: HTMLInputElement = <HTMLInputElement>document.getElementById('search');
   static matchesTable: HTMLElement = document.getElementById('matches');
+  static soccerStreamsLink: HTMLElement = document.getElementById('soccer-streams-link');
+  static soccerStreamsLinkWrap: HTMLElement = document.getElementById('soccer-streams-link-wrap');
   static streamsWrap: HTMLElement = document.getElementById('streams-wrap');
   static backButton: HTMLElement = document.getElementById('back-button');
   static threadInfoDiv: HTMLElement = document.getElementById('thread-info');

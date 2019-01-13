@@ -15,6 +15,7 @@ class App {
     DomHelper.streamsTable.innerHTML = '';
   
     DomHelper.showElement(DomHelper.matchesTable);
+    DomHelper.showElement(DomHelper.soccerStreamsLinkWrap);
 
     DomHelper.hideElement(DomHelper.streamTypeDiv);
   
@@ -89,6 +90,7 @@ class App {
           this.resetMatchesFilter();
       
           DomHelper.hideElement(DomHelper.matchesTable);
+          DomHelper.hideElement(DomHelper.soccerStreamsLinkWrap);
       
           DomHelper.showElement(DomHelper.streamsWrap);
       

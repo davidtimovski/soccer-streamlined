@@ -44,19 +44,6 @@ tr, td {
     color: #444;
 }
 
-#message {
-    display: none;
-    padding: 2px 5px 4px 5px;
-    white-space: nowrap;
-    text-align: center;
-}
-#message.info {
-    color: #3f8cbf;
-}
-#message.error {
-    color: #bf3c4f;
-}
-
 #matches {
     display: none;
 }
@@ -90,6 +77,35 @@ tr, td {
 #matches tr:last-child td {
     border-bottom: none;
 }
+
+#message {
+    display: none;
+    padding: 2px 5px 7px 5px;
+    white-space: nowrap;
+    text-align: center;
+}
+#message.info {
+    color: #3f8cbf;
+}
+#message.error {
+    color: #bf3c4f;
+}
+
+#soccer-streams-link-wrap {
+    display: none;
+    background: #f3f3f3;
+    border-top: 1px solid #e2e2e2;
+    padding: 6px 5px;
+    text-align: center;
+}
+#soccer-streams-link {
+    display: inline-block;
+    margin-top: 1px;
+    text-decoration: underline;
+    color: #3f8cbf;
+    cursor: pointer;
+}
+
 .league-icon {
     display: inline-block;
     width: auto !important;
