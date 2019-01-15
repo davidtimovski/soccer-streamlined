@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "taskName": "Release",
+      "label": "Release",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -10,7 +10,7 @@
       "dependsOn": [ "Compile TypeScript", "Minify JavaScript", "Minify CSS", "Copy remaining files (Release)" ]
     },
     {
-      "taskName": "Debug",
+      "label": "Debug",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -33,11 +33,7 @@
     {
       "label": "Minify CSS",
       "type": "grunt",
-      "task": "cssmin",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "task": "cssmin"
     },
     {
       "label": "Copy remaining files (Debug)",
