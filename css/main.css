@@ -98,7 +98,7 @@ tr, td {
     padding: 6px 5px;
     text-align: center;
 }
-#soccer-streams-link {
+.soccer-streams-link {
     display: inline-block;
     margin-top: 1px;
     text-decoration: underline;
