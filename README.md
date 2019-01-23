@@ -8,7 +8,7 @@ Firefox user? [Here](https://addons.mozilla.org/en-US/firefox/addon/soccer-strea
 
 ### Thank you
 
-To all of the streamers and watchers at [www.reddit.com/r/soccerstreams](www.reddit.com/r/soccerstreams) for making this extension possible.
+To all of the streamers and watchers at [www.reddit.com/r/soccerstreams_pl](www.reddit.com/r/soccerstreams_pl) and [www.reddit.com/r/soccerstreams_other](www.reddit.com/r/soccerstreams_other) for making this extension possible.
 
 ### License
 
