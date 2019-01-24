@@ -4,11 +4,11 @@ let httpClient = new HttpClient();
 
 httpClient.getJson('https://www.reddit.com/r/soccerstreams_pl', plResult => {
 
-  let posts: [] = plResult.data.children;
+  let posts = plResult.data.children;
 
   httpClient.getJson('https://www.reddit.com/r/soccerstreams_other', otherResult => {
 
-    posts.concat(otherResult.data.children);
+    posts = posts.concat(otherResult.data.children);
 
     let app = new App();
     let parser = new Parser();
