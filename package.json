@@ -1,7 +1,7 @@
 {
   "name": "soccer-streamlined",
   "version": "1.0.0",
-  "description": "Find a stream on reddit.com/r/soccerstreams",
+  "description": "Find a stream on reddit.com/r/footballstreams_pl",
   "main": "popup.js",
   "directories": {
     "lib": "lib"
