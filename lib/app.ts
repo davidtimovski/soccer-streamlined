@@ -16,7 +16,6 @@ class App {
   
     DomHelper.showElement(DomHelper.matchesTable);
     DomHelper.showElement(DomHelper.soccerStreamsLinkWrap);
-    DomHelper.showElement(DomHelper.soccerStreamsNote);
 
     DomHelper.hideElement(DomHelper.streamTypeDiv);
   
