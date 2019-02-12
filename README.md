@@ -12,7 +12,9 @@ To all of the streamers and watchers at
 * ~~[www.reddit.com/r/soccerstreams](https://www.reddit.com/r/soccerstreams)~~
 * ~~[www.reddit.com/r/soccerstreams_pl](https://www.reddit.com/r/soccerstreams_pl)~~
 * ~~[www.reddit.com/r/soccerstreams_other](https://www.reddit.com/r/soccerstreams_other)~~
-* [www.reddit.com/r/footballstreams_pl](https://www.reddit.com/r/footballstreams_pl)
+* ~~[www.reddit.com/r/footballstreams_pl](https://www.reddit.com/r/footballstreams_pl)~~
+* [www.reddit.com/r/soccerstreams69](https://www.reddit.com/r/soccerstreams69)
+
 
 for making this extension possible.
 

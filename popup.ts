@@ -2,7 +2,7 @@
 
 let httpClient = new HttpClient();
 
-httpClient.getJson('https://www.reddit.com/r/footballstreams_pl', plResult => {
+httpClient.getJson('https://www.reddit.com/r/soccerstreams69', plResult => {
 
   let posts = plResult.data.children;
 
@@ -21,7 +21,7 @@ httpClient.getJson('https://www.reddit.com/r/footballstreams_pl', plResult => {
   DomHelper.showElement(DomHelper.matchesTable);
 
   DomHelper.soccerStreamsLink.addEventListener('click', () => {
-    chrome.tabs.create({ url: 'https://www.reddit.com/r/footballstreams_pl', active: true });
+    chrome.tabs.create({ url: 'https://www.reddit.com/r/soccerstreams69', active: true });
   }, false);
   DomHelper.showElement(DomHelper.soccerStreamsLinkWrap);
 
