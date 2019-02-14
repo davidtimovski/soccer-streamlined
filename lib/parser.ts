@@ -17,7 +17,7 @@ class Parser {
       let match = new Match();
       match.id = post.data.id;
       match.title = this.getTitleWithoutTime(post.data.title);
-      match.url = post.data.url;
+      match.url = 'https://www.reddit.com' + post.data.permalink;
       match.kickOffTime = kickOffTime;
       match.kickOffTimeFormatted = this.formatKickOffTime(kickOffTime);
       match.leagueIcon = post.data.link_flair_css_class;
@@ -42,6 +42,7 @@ class Parser {
     let streams = new Array<Stream>();
   
     for (let comment of comments) {
+      debugger
       let linksInBody: Link[] = [];
       let aceStreamsInBody: AceStream[] = [];
       let sopCastStreamsInBody: SopCast[] = [];

@@ -2,9 +2,9 @@
 
 let httpClient = new HttpClient();
 
-httpClient.getJson('https://www.reddit.com/r/soccerstreams69', plResult => {
+httpClient.getJson('https://www.reddit.com/r/soccerstreams69', result => {
 
-  let posts = plResult.data.children;
+  let posts = result.data.children;
 
   let app = new App();
   let parser = new Parser();
