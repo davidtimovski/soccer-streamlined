@@ -16,7 +16,8 @@ To all of the streamers and watchers at
 * ~~[www.reddit.com/r/soccerstreams69](https://www.reddit.com/r/soccerstreams69)~~
 * ~~[www.reddit.com/r/footballconnection](https://www.reddit.com/r/footballconnection)~~
 * ~~[www.reddit.com/r/socceronreddit](https://www.reddit.com/r/socceronreddit)~~
-* [www.reddit.com/r/InfluentialSpheres](https://www.reddit.com/r/InfluentialSpheres)
+* ~~[www.reddit.com/r/InfluentialSpheres](https://www.reddit.com/r/InfluentialSpheres)~~
+* [www.reddit.com/r/redditsoccercity](https://www.reddit.com/r/redditsoccercity)
 
 
 for making this extension possible.
