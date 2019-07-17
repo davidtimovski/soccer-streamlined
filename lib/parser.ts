@@ -2,6 +2,7 @@
 /// <reference path="stream.ts" />
 
 class Parser {
+  private static readonly kickOffTimeRegex: RegExp = /\[.+\]/;
 
   getMatchesFromPosts(posts: any[]): Match[] {
     let matches = new Array<Match>();
@@ -42,7 +43,6 @@ class Parser {
     let streams = new Array<Stream>();
   
     for (let comment of comments) {
-      debugger
       let linksInBody: Link[] = [];
       let aceStreamsInBody: AceStream[] = [];
       let sopCastStreamsInBody: SopCast[] = [];
@@ -76,14 +76,16 @@ class Parser {
     }
   }
 
-  private getKickOffTimeFromTitle(title: string): any {
-    if (title.indexOf('[') === -1) {
-      return false;
+  private getKickOffTimeFromTitle(title: string): Date {
+    let requestPart = title.match(/\[request\]/i);
+    let kickOffTimePart = title.match(Parser.kickOffTimeRegex);
+
+    // Skip match requests and match posts where the title is malformed
+    if (requestPart || !kickOffTimePart) {
+      return null;
     }
 
-    let startingPosition: number = title.indexOf('[') + 1;
-    let endPosition: number = title.indexOf(']', startingPosition);
-    let hoursAndMinutesText: string = title.substring(startingPosition, endPosition);
+    let hoursAndMinutesText: string = kickOffTimePart[0].trim().substring(1, kickOffTimePart[0].length - 1);
     let hoursAndMinutesArray: string[] = hoursAndMinutesText.trim().split(/\D+/);
   
     let now = new Date();
@@ -91,17 +93,15 @@ class Parser {
       parseInt(hoursAndMinutesArray[0], 10), parseInt(hoursAndMinutesArray[1], 10), 0, 0);
   
     if (isNaN(utc)) {
-      return false;
+      return null;
     }
   
     return new Date(utc);
   }
 
   private getTitleWithoutTime(title: string): string {
-    let startingPosition: number = title.indexOf(']');
-    let titleWithoutTime: string = title.substring(startingPosition + 1, title.length).trim();
-    let cleanUpTitleRegex: RegExp = /([^a-zA-Z]*?)(?=[a-zA-Z])/;
-    return titleWithoutTime.replace(cleanUpTitleRegex, '');
+    let kickOffTimePart = title.match(Parser.kickOffTimeRegex);
+    return title.replace(kickOffTimePart[0], '');
   }
 
   private formatKickOffTime(date: Date): string {
