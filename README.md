@@ -19,7 +19,8 @@ To all of the streamers and watchers at
 * ~~[www.reddit.com/r/InfluentialSpheres](https://www.reddit.com/r/InfluentialSpheres)~~
 * ~~[www.reddit.com/r/redditsoccercity](https://www.reddit.com/r/redditsoccercity)~~
 * ~~[www.reddit.com/r/soccercom](https://www.reddit.com/r/soccercom)~~
-* [www.reddit.com/r/soccermenow](https://www.reddit.com/r/soccermenow)
+* ~~[www.reddit.com/r/soccermenow](https://www.reddit.com/r/soccermenow)~~
+* [www.reddit.com/r/soccerstreamsredd](https://www.reddit.com/r/soccerstreamsredd)
 
 
 for making this extension possible.
