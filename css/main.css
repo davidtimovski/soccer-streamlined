@@ -104,6 +104,9 @@ tr, td {
     color: #3f8cbf;
     cursor: pointer;
 }
+#soccer-streams-note {
+  width: 325px;
+}
 
 .league-icon {
     display: inline-block;

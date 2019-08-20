@@ -63,7 +63,7 @@ class App {
         DomHelper.showElement(loadingDiv);
       
         let httpClient = new HttpClient();
-        httpClient.getJson(match.url, result => {
+        httpClient.get(match.url + '.json', result => {
       
           let threadInfo = new ThreadInfo(matchButton.innerHTML, match.url);
           let comments = result[1].data.children;
@@ -82,7 +82,7 @@ class App {
             DomHelper.hideElement(DomHelper.legendDiv);
             DomHelper.hideElement(DomHelper.clipboardWrap);
             
-            DomHelper.showInfoMessage('There are currently no available streams for this match.');
+            DomHelper.showInfoMessage('There are currently no available streams for this match');
           }
       
           DomHelper.searchInput.dataset.visible = 'false';
@@ -107,7 +107,7 @@ class App {
 
           DomHelper.hideElement(DomHelper.matchesTable);
         
-          DomHelper.showErrorMessage('An error occurred while loading the streams.'); 
+          DomHelper.showErrorMessage('Couldn\'t load the streams'); 
         });
 
       }, false);

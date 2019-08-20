@@ -1,6 +1,6 @@
 class HttpClient {
 
-  getJson(url: string, successCallback: (result: any) => void, errorCallback: (statusCode: number) => void): void {
+  get(url: string, successCallback: (result: any) => void, errorCallback: (statusCode: number) => void): void {
     let request = new XMLHttpRequest();
   
     request.onreadystatechange = () =>
@@ -15,7 +15,7 @@ class HttpClient {
       }
     };
     
-    request.open('GET', url + '.json');
+    request.open('GET', url);
     request.send();
   }
 
