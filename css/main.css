@@ -1,426 +1,433 @@
 body {
-    background: #fafafa;
-    margin: 6px 6px 4px 6px;
-    font-family: 'Segoe UI', 'Lucida Grande', Tahoma, sans-serif;
-    font-size: 14px;
-    color: #444;
+  background: #fafafa;
+  margin: 6px 6px 4px 6px;
+  font-family: 'Segoe UI', 'Lucida Grande', Tahoma, sans-serif;
+  font-size: 14px;
+  color: #444;
 }
 
 button {
-    font-family: inherit;
-    cursor: pointer;
-    transition: background 250ms;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 250ms;
 }
 
 table {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    border-collapse: collapse;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
 }
-tr, td {
-    padding: 0;
+tr,
+td {
+  padding: 0;
 }
 
 #loading {
-    width: 34px;
-    height: 34px;
-    background: url(../images/loading.gif);
-    background-size: 34px 34px;
-    background-repeat: no-repeat;
-    margin: 10px 5px;
+  width: 34px;
+  height: 34px;
+  background: url(../images/loading.gif);
+  background-size: 34px 34px;
+  background-repeat: no-repeat;
+  margin: 10px 5px;
 }
 
 #search {
-    display: none;
-    width: 100%;
-    min-width: 200px;
-    box-sizing: border-box;
-    border: 1px solid #e2e2e2;
-    outline: none;
-    padding: 4px 6px;
-    margin-bottom: 5px;
-    font-family: inherit;
-    color: #444;
+  display: none;
+  width: 100%;
+  min-width: 200px;
+  box-sizing: border-box;
+  border: 1px solid #e2e2e2;
+  outline: none;
+  padding: 4px 6px;
+  margin-bottom: 5px;
+  font-family: inherit;
+  color: #444;
 }
 
 #matches {
-    display: none;
+  display: none;
 }
 #matches tr {
-    font-size: 0;
+  font-size: 0;
 }
 #matches tr td {
-    border-bottom: 1px solid #e2e2e2;
-    font-size: 14px;
+  border-bottom: 1px solid #e2e2e2;
+  font-size: 14px;
 }
 #matches tr td:first-child {
-    min-width: 42px;
-    padding-right: 5px;
-    text-align: center;
+  min-width: 42px;
+  padding-right: 5px;
+  text-align: center;
 }
 #matches tr td .kickoff-time {
-    color: #3f8cbf;
+  color: #3f8cbf;
 }
 #matches tr td .loading {
-    display: none;
-    background: url(../images/loading.gif);
-    background-size: 22px 22px;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 42px;
-    height: 22px;
+  display: none;
+  background: url(../images/loading.gif);
+  background-size: 22px 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 42px;
+  height: 22px;
 }
-#matches tr td:nth-child(n+2) {
-    width: 100%;
+#matches tr td:nth-child(n + 2) {
+  width: 100%;
 }
 #matches tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 #message {
-    display: none;
-    padding: 2px 5px 7px 5px;
-    white-space: nowrap;
-    text-align: center;
+  display: none;
+  padding: 2px 5px 7px 5px;
+  white-space: nowrap;
+  text-align: center;
 }
 #message.info {
-    color: #3f8cbf;
+  color: #3f8cbf;
 }
 #message.error {
-    color: #bf3c4f;
+  color: #bf3c4f;
 }
 
-#soccer-streams-link-wrap, #soccer-streams-note {
-    display: none;
-    background: #f3f3f3;
-    border-top: 1px solid #e2e2e2;
-    padding: 6px 5px;
-    text-align: center;
+#soccer-streams-link-wrap,
+#soccer-streams-note {
+  display: none;
+  background: #f3f3f3;
+  border-top: 1px solid #e2e2e2;
+  padding: 6px 5px;
+  text-align: center;
 }
 .soccer-streams-link {
-    margin-top: 1px;
-    text-decoration: underline;
-    color: #3f8cbf;
-    cursor: pointer;
+  margin-top: 1px;
+  text-decoration: underline;
+  color: #3f8cbf;
+  cursor: pointer;
 }
 #soccer-streams-note {
   width: 325px;
+  border-top: none;
+}
+#soccer-streams-note h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
 }
 
 .league-icon {
-    display: inline-block;
-    width: auto !important;
-    height: 17px;
-    background: url(../images/league-icons.png) no-repeat -9999px;
-    box-sizing: border-box;
-    padding-left: 20px;
-    margin-right: 5px;
-    border: 0;
-    text-indent: -999em;
-    vertical-align: bottom;
+  display: inline-block;
+  width: auto !important;
+  height: 17px;
+  background: url(../images/league-icons.png) no-repeat -9999px;
+  box-sizing: border-box;
+  padding-left: 20px;
+  margin-right: 5px;
+  border: 0;
+  text-indent: -999em;
+  vertical-align: bottom;
 }
 .league-icon.generic {
-    background-position: 0 -611px;
+  background-position: 0 -611px;
 }
 .league-icon.premierleague {
-    background-position: 0 -475px;
+  background-position: 0 -475px;
 }
 .league-icon.seriea {
-    background-position: 0 -543px;
+  background-position: 0 -543px;
 }
 .league-icon.laliga {
-    background-position: 0 -390px;
+  background-position: 0 -390px;
 }
 .league-icon.bundesliga {
-    background-position: 0 -33px;
+  background-position: 0 -33px;
 }
 .league-icon.ligue1 {
-    background-position: 0 -407px;
+  background-position: 0 -407px;
 }
 .league-icon.eredivisie {
-    background-position: 0 -271px;
+  background-position: 0 -271px;
 }
 .league-icon.primeraliga {
-    background-position: 0 -509px;
+  background-position: 0 -509px;
 }
 .league-icon.championship {
-    background-position: 0 -67px;
+  background-position: 0 -67px;
 }
 .league-icon.scottishpremierleague {
-    background-position: 0 -526px;
+  background-position: 0 -526px;
 }
 .league-icon.aleague {
-    background-position: 0 -16px;
+  background-position: 0 -16px;
 }
 .league-icon.swisssuperleague {
-    background-position: 0 -560px;
+  background-position: 0 -560px;
 }
 .league-icon.facup {
-    background-position: 0 -322px;
+  background-position: 0 -322px;
 }
 .league-icon.eflcup {
-    background-position: 0 -1121px;
+  background-position: 0 -1121px;
 }
 .league-icon.championsleague {
-    background-position: 0 -84px;
+  background-position: 0 -84px;
 }
 .league-icon.europa {
-    background-position: 0 -288px;
+  background-position: 0 -288px;
 }
 .league-icon.turkishsuperlig {
-    background-position: 0 -577px;
+  background-position: 0 -577px;
 }
 .league-icon.mls {
-    background-position: 0 -424px;
+  background-position: 0 -424px;
 }
 .league-icon.gresupleague {
-    background-position: 0px -832px;
+  background-position: 0px -832px;
 }
 .league-icon.densuperliga {
-    background-position: 0 -900px;
+  background-position: 0 -900px;
 }
 .league-icon.extraklasa {
-    background-position: 0px -934px;
+  background-position: 0px -934px;
 }
 .league-icon.beljup {
-    background-position: 0 -1087px;
+  background-position: 0 -1087px;
 }
 .league-icon.rusprem {
-    background-position: 0 -781px;
+  background-position: 0 -781px;
 }
 .league-icon.ukrprem {
-    background-position: 0 -798px;
+  background-position: 0 -798px;
 }
 .league-icon.chinesesuperleague {
-    background-position: 0 -101px;
+  background-position: 0 -101px;
 }
 .league-icon.indiansuperleague {
-    background-position: 0 -339px;
+  background-position: 0 -339px;
 }
 .league-icon.chiprem {
-    background-position: 0 -968px;
+  background-position: 0 -968px;
 }
 .league-icon.frligue2 {
-    background-position: 0px -763px;
+  background-position: 0px -763px;
 }
 .league-icon.itaserieb {
-    background-position: 0px -815px;
+  background-position: 0px -815px;
 }
 .league-icon.coppaitalia {
-    background-position: 0px -203px;
+  background-position: 0px -203px;
 }
 .league-icon.allsvenskan {
-    background-position: 0px -883px;
+  background-position: 0px -883px;
 }
 .league-icon.copadelrey {
-    background-position: 0 -169px;
+  background-position: 0 -169px;
 }
 .league-icon.braseriea {
-    background-position: 0 -1019px;
+  background-position: 0 -1019px;
 }
 .league-icon.dfbpokal {
-    background-position: 0 -237px;
+  background-position: 0 -237px;
 }
 .league-icon.coupedefrance {
-    background-position: 0 -220px;
+  background-position: 0 -220px;
 }
 .league-icon.afcchampionsleague {
-    background-position: 0 2px;
+  background-position: 0 2px;
 }
 .league-icon.tippeligaen {
-    background-position: 0 -917px;
+  background-position: 0 -917px;
 }
 .league-icon.autbundesliga {
-    background-position: 0 -866px;
+  background-position: 0 -866px;
 }
 .league-icon.nasl {
-    background-position: 0 -441px;
+  background-position: 0 -441px;
 }
 .league-icon.caf {
-    background-position: 0 -730px;
+  background-position: 0 -730px;
 }
 .league-icon.fifa {
-    background-position: 0px -645px;
+  background-position: 0px -645px;
 }
 .league-icon.wc18 {
-    background-position: 0px -1139px;
+  background-position: 0px -1139px;
 }
 .league-icon.internationalfriendlies {
-    background-position: 0px -356px;
+  background-position: 0px -356px;
 }
 .league-icon.olympics {
-    background-position: 0px -458px;
+  background-position: 0px -458px;
 }
 .league-icon.championscup {
-    background-position: 0px -50px;
+  background-position: 0px -50px;
 }
 .league-icon.jleague {
-    background-position: 0 -373px;
+  background-position: 0 -373px;
 }
 #matches tr td button {
-    display: block;
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 5px 8px;
-    white-space: nowrap;
-    text-align: left;
-    color: #444;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 5px 8px;
+  white-space: nowrap;
+  text-align: left;
+  color: #444;
 }
 #matches tr:hover td {
-    background: #f3f3f3;
+  background: #f3f3f3;
 }
 
 #streams-wrap {
-    display: none;
+  display: none;
 }
 #streams-wrap header {
-    display: table;
-    width: 100%;
-    border-bottom: 1px solid #e2e2e2;
-    margin-bottom: 6px;
+  display: table;
+  width: 100%;
+  border-bottom: 1px solid #e2e2e2;
+  margin-bottom: 6px;
 }
 #streams-wrap header .header-part {
-    display: table-cell;
+  display: table-cell;
 }
 #streams-wrap header .header-part.middle {
-    padding: 0 15px 10px;
-    text-align: center;
-    white-space: nowrap;
+  padding: 0 15px 10px;
+  text-align: center;
+  white-space: nowrap;
 }
 #streams-wrap header .header-part.right {
-    text-align: right;
+  text-align: right;
 }
 #streams-wrap header button {
-    background: #7fccff;
-    border: 1px solid #e2e2e2;
-    outline: none;
-    padding: 5px 10px;
-    color: #fff;
+  background: #7fccff;
+  border: 1px solid #e2e2e2;
+  outline: none;
+  padding: 5px 10px;
+  color: #fff;
 }
 #streams-wrap header button:hover {
-    background: #77c4f7;
+  background: #77c4f7;
 }
 
 #legend {
-    padding-bottom: 4px;
-    font-size: 0;
+  padding-bottom: 4px;
+  font-size: 0;
 }
 #legend .legend-item {
-    display: inline-block;
-    width: 31%;
-    border-bottom: 3px solid;
-    padding-bottom: 2px;
-    font-size: 14px;
-    text-align: center;
+  display: inline-block;
+  width: 31%;
+  border-bottom: 3px solid;
+  padding-bottom: 2px;
+  font-size: 14px;
+  text-align: center;
 }
 #legend .legend-item.link {
-    margin-right: 3.5%;
-    border-bottom-color: #80cdff;
+  margin-right: 3.5%;
+  border-bottom-color: #80cdff;
 }
 #legend .legend-item.acestream {
-    margin-right: 3.5%;
-    border-bottom-color: #bdd990;
+  margin-right: 3.5%;
+  border-bottom-color: #bdd990;
 }
 #legend .legend-item.sopcast {
-    border-bottom-color: #e181c1;
+  border-bottom-color: #e181c1;
 }
 
 #streams tr td {
-    border-bottom: 1px solid #e2e2e2;
-    padding-top: 3px;
+  border-bottom: 1px solid #e2e2e2;
+  padding-top: 3px;
 }
 #streams tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .links {
-    min-width: 307px;
-    background: url(../images/links-bg.png) repeat;
-    padding-right: 3px !important;
+  min-width: 307px;
+  background: url(../images/links-bg.png) repeat;
+  padding-right: 3px !important;
 }
 .links button {
-    display: inline-block;
-    width: 28px;
-    border: 1px solid #e2e2e2;
-    outline: none;
-    padding: 0;
-    margin: 0 3px 3px 0;
-    line-height: 23px;
-    color: #fff;
+  display: inline-block;
+  width: 28px;
+  border: 1px solid #e2e2e2;
+  outline: none;
+  padding: 0;
+  margin: 0 3px 3px 0;
+  line-height: 23px;
+  color: #fff;
 }
-.links button:nth-child(10n+10) {
-    margin-right: 0;
+.links button:nth-child(10n + 10) {
+  margin-right: 0;
 }
 
 .author {
-    border-left: 1px solid #e2e2e2;
-    padding: 0 0 3px 3px;
-    text-align: center;
+  border-left: 1px solid #e2e2e2;
+  padding: 0 0 3px 3px;
+  text-align: center;
 }
 .author button {
-    width: 100%;
-    background: #f0f0f0;
-    border: none;
-    outline: none;
-    padding: 0 8px;
-    line-height: 25px;
-    color: #444;
+  width: 100%;
+  background: #f0f0f0;
+  border: none;
+  outline: none;
+  padding: 0 8px;
+  line-height: 25px;
+  color: #444;
 }
 .author button:hover {
-    background: #f5f5f5;
+  background: #f5f5f5;
 }
 
 .link-button {
-    background: #80cdff;
+  background: #80cdff;
 }
 .link-button:hover {
-    background: #60addf;
+  background: #60addf;
 }
 
 .ace-stream-button {
-    background: #bdd990;
+  background: #bdd990;
 }
 .ace-stream-button:hover {
-    background: #9db970;
+  background: #9db970;
 }
 
 .sopcast-stream-button {
-    background: #e181c1;
+  background: #e181c1;
 }
 .sopcast-stream-button:hover {
-    background: #c161a1;
+  background: #c161a1;
 }
 
 #clipboard-wrap {
-    display: flex;
+  display: flex;
 }
 #stream-type {
-    display: none;
-    flex: 1;
-    background: #f0f0f0;
-    border: 1px solid #e2e2e2;
-    border-right: none;
-    padding: 0 7px;
-    line-height: 25px;
+  display: none;
+  flex: 1;
+  background: #f0f0f0;
+  border: 1px solid #e2e2e2;
+  border-right: none;
+  padding: 0 7px;
+  line-height: 25px;
 }
 #clipboard-wrap textarea {
-    width: 100%;
-    height: 28px;
-    box-sizing: border-box;
-    border: 1px solid #e2e2e2;
-    outline: none;
-    padding: 0 5px;
-    margin: 0;
-    line-height: 26px;
-    font-family: inherit;
-    font-size: inherit;
-    text-align: center;
-    color: #444;
-    resize: none;
+  width: 100%;
+  height: 28px;
+  box-sizing: border-box;
+  border: 1px solid #e2e2e2;
+  outline: none;
+  padding: 0 5px;
+  margin: 0;
+  line-height: 26px;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: center;
+  color: #444;
+  resize: none;
 }
 #clipboard-wrap textarea:disabled {
-    background: #f0f0f0;
+  background: #f0f0f0;
 }

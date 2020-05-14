@@ -1,56 +1,55 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Soccer Streamlined</title>
-    <link rel="stylesheet" href="css/main.css" />
-  </head>
-  <body>
-    <div id="loading"></div>
 
-    <input type="text" id="search" placeholder="Search" data-visible="false" />
-    
-    <table id="matches"></table>
+<head>
+  <title>Soccer Streamlined</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
 
-    <div id="streams-wrap">
-      <header>
-        <div class="header-part">
-          <button id="back-button">Back</button>
-        </div>
-        <div id="thread-info" class="header-part middle"></div>
-        <div class="header-part right">
-          <button id="thread-button">Thread</button>
-        </div>
-      </header>
-      <div id="legend">
-        <div class="legend-item link">Link</div>
-        <div class="legend-item acestream">AceStream</div>
-        <div class="legend-item sopcast">SopCast</div>
+<body>
+  <div id="loading"></div>
+
+  <input type="text" id="search" placeholder="Search" data-visible="false" />
+
+  <table id="matches"></table>
+
+  <div id="streams-wrap">
+    <header>
+      <div class="header-part">
+        <button id="back-button">Back</button>
       </div>
-
-      <div id="clipboard-wrap">
-        <div id="stream-type"></div>
-        <textarea id="clipboard" spellcheck="false" disabled>Pick a stream</textarea>
+      <div id="thread-info" class="header-part middle"></div>
+      <div class="header-part right">
+        <button id="thread-button">Thread</button>
       </div>
-
-      <table id="streams"></table>
+    </header>
+    <div id="legend">
+      <div class="legend-item link">Link</div>
+      <div class="legend-item acestream">AceStream</div>
+      <div class="legend-item sopcast">SopCast</div>
     </div>
 
-    <div id="message"></div>
-
-    <div id="soccer-streams-link-wrap">
-      Can't find a match? Check the source:
-      <div class="soccer-streams-link" id="soccer-streams-link"></div>
-    </div>
-    <div id="soccer-streams-note">
-      This may happen because Reddit.com are frequently banning the subreddits that this extension uses to find matches and streams.
-      <br>
-      <br>
-      If a subreddit has been banned I am probably already on the hunt to find a new one and update the source. So try again in a few minutes.
-      <br>
-      <br>
-      Thank you for your patience!
+    <div id="clipboard-wrap">
+      <div id="stream-type"></div>
+      <textarea id="clipboard" spellcheck="false" disabled>Pick a stream</textarea>
     </div>
 
-    <script src="js/popup.js"></script>
-  </body>
+    <table id="streams"></table>
+  </div>
+
+  <div id="message"></div>
+
+  <div id="soccer-streams-link-wrap">
+    Can't find a match? Check the source:
+    <div class="soccer-streams-link" id="soccer-streams-link"></div>
+  </div>
+  <div id="soccer-streams-note">
+    <h3>This extension is no longer useful</h3>
+    <div>People no longer post soccer streams on Reddit. It was a long battle of subreddits becoming banned and people
+      creating new ones, but in the end it's proven futile. Find your streams elsewhere :(</div>
+  </div>
+
+  <script src="js/popup.js"></script>
+</body>
+
 </html>
